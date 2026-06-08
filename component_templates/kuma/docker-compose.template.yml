@@ -1,0 +1,18 @@
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:{{ component_version }}
+    container_name: piselfhosting-uptime-kuma
+    restart: unless-stopped
+    ports:
+      - "3001:3001" # Port from metadata is 3001
+    volumes:
+      - "{{DATA_ROOT}}/uptime-kuma/data:/app/data"
+    environment:
+      # Uptime Kuma uses its own internal PUID/PGID
+      - "TZ={{TZ}}"
+    networks:
+      - piselfhosting_net
+
+networks:
+  piselfhosting_net:
+    external: true

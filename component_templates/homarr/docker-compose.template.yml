@@ -1,0 +1,13 @@
+services:
+  homarr:
+    container_name: piselfhosting-homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    ports:
+      - "{{ HOMARR_WEB_PORT }}:7575"
+    volumes:
+      - "{{ HOMARR_CONFIG_PATH }}/configs:/app/data/configs"
+      - "{{ HOMARR_CONFIG_PATH }}/icons:/app/public/icons"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - piselfhosting_net

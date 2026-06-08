@@ -1,0 +1,23 @@
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:{{ component_version }}
+    container_name: piselfhosting-radarr
+    restart: unless-stopped
+    environment:
+      - "PUID={{ PUID | default('1000') }}"
+      - "PGID={{ PGID | default('1000') }}"
+      - "TZ={{ TZ | default('Europe/Amsterdam') }}"
+    volumes:
+      - "{{ CONFIG_BASE_PATH }}/radarr/config:/config"
+      # Point this to your movie library, should be the same as Jellyfin's movie folder
+      - "{{ CONFIG_BASE_PATH }}/jellyfin/movies:/movies"
+      # Point this to where your download client saves completed files
+      - "{{ CONFIG_BASE_PATH }}/downloads:/downloads"
+    ports:
+      - "{{ RADARR_WEB_PORT | default('7878') }}:7878"
+    networks:
+      - piselfhosting_net
+
+networks:
+  piselfhosting_net:
+    external: true

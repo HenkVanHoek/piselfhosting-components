@@ -1,0 +1,15 @@
+# templates/docker-monitor/docker-compose.template.yml
+services:
+  docker-monitor:
+    container_name: piselfhosting-docker-monitor
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - "{{DATA_ROOT}}/docker-monitor/html:/usr/share/nginx/html:ro"
+    ports:
+      - "8088:80"
+    networks:
+      - piselfhosting_net
+networks:
+  piselfhosting_net:
+    external: true
