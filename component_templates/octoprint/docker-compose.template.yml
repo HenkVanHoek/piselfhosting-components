@@ -1,3 +1,7 @@
+# status: "testing"
+# last_tested_version: "none"
+# platform_notes: "Targeted for ARM architecture."
+# breaking_changes: "None"
 ARG PYTHON_BASE_IMAGE=3.10-slim-bullseye
 
 FROM ubuntu AS s6build
