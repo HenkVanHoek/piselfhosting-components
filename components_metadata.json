@@ -138,7 +138,8 @@
             "tags": [
                 "self-hosted"
             ],
-            "traefik_internal_port": null
+            "traefik_internal_port": null,
+            "ui_port_variable": null
         },
         "conduit": {
             "component_version": "latest",
