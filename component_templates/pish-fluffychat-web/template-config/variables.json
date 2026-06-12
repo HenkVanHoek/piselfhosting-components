@@ -2,16 +2,23 @@
     "variables": [
         {
             "default": "8080",
-            "description": "The host port for the FluffyChat web interface.",
+            "description": "The external port for the FluffyChat web interface.",
             "id": "FLUFFYCHAT_WEB_PORT",
-            "label": "FluffyChat Web Port",
+            "label": "Web UI Port",
             "type": "port"
         },
         {
-            "default": "https://matrix.example.com",
-            "description": "The URL of your Matrix homeserver (e.g., https://matrix.yourdomain.com).",
-            "id": "FLUFFYCHAT_HOMESERVER_URL",
-            "label": "Matrix Homeserver URL",
+            "default": "/var/lib/piselfhosting",
+            "description": "The base directory for all persistent data. This component does not directly use it for volumes but it is a standard variable.",
+            "id": "DATA_ROOT",
+            "label": "Data Root Directory",
+            "type": "string"
+        },
+        {
+            "default": "latest",
+            "description": "The version tag for the FluffyChat Web Docker image.",
+            "id": "component_version",
+            "label": "Component Version",
             "type": "string"
         }
     ]

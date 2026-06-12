@@ -672,21 +672,19 @@
         },
         "pish-fluffychat-web": {
             "conflicts_with": [],
-            "depends_on": [
-                "matrix-synapse"
-            ],
-            "description": "A modern, beautiful, and easy-to-use Matrix client for the web, based on FluffyChat. This component provides a web interface to connect to your Matrix homeserver.",
+            "depends_on": [],
+            "description": "A modern, cute, and cross-platform Matrix client web interface, packaged as a PiSelfhosting component.",
             "docker_service_name": "fluffychat-web",
-            "group": "Chat",
+            "group": "Messaging",
             "has_configuration": true,
             "has_ui": true,
-            "image_name": "piselfhosting/fluffychat-web",
+            "image_name": "pish-fluffychat-web",
             "name": "FluffyChat Web",
             "tags": [
-                "chat",
                 "matrix",
-                "webclient",
-                "communication"
+                "chat",
+                "web",
+                "client"
             ],
             "ui_port_variable": null
         },
