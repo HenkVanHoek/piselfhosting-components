@@ -4,8 +4,8 @@
 # breaking_changes: "None"
 services:
   fluffychat-web:
-    image: {{ IMAGE_NAME }}
-    container_name: fluffychat-web
+    image: {{ image_name }}:{{ component_version }}
+    container_name: piselfhosting-fluffychat-web
     restart: unless-stopped
     ports:
       - "{{ FLUFFYCHAT_HTTP_PORT }}:80"
