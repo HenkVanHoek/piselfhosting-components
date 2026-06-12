@@ -672,19 +672,19 @@
         },
         "pish-fluffychat-web": {
             "conflicts_with": [],
-            "depends_on": [
-                "matrix-synapse"
-            ],
-            "description": "A beautiful, cross-platform matrix client for desktop and mobile, focused on design and usability. This component provides the web version, designed to connect to your Matrix homeserver (e.g., Matrix Synapse).",
+            "depends_on": [],
+            "description": "A web interface for FluffyChat, serving static files and proxying Matrix API calls.",
             "group": "Chat",
             "has_configuration": true,
             "has_ui": true,
-            "image_name": "ghcr.io/henkvanhoek/fluffychat-web",
+            "image_name": "piselfhosting-fluffychat-web",
             "name": "FluffyChat Web",
             "tags": [
                 "chat",
                 "matrix",
-                "web"
+                "fluffychat",
+                "web",
+                "nginx"
             ],
             "ui_port_variable": null
         },
