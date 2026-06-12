@@ -54,7 +54,7 @@ RUN apt-get update && apt-get install -y \
 # unpack s6
 COPY --from=s6build /tmp /tmp
 RUN s6tar=$(find /tmp -name "s6-overlay-*.tar.gz") \
-  && tar xzf $s6tar -C / 
+  && tar xzf $s6tar -C /
 
 # Install octoprint
 RUN	curl -fsSLO --compressed --retry 3 --retry-delay 10 \
@@ -84,7 +84,7 @@ ENV MJPG_STREAMER_INPUT -n -r 640x480
 ENV PIP_USER true
 ENV PYTHONUSERBASE /octoprint/plugins
 ENV PATH "${PYTHONUSERBASE}/bin:${PATH}"
-# set WORKDIR 
+# set WORKDIR
 WORKDIR /octoprint
 
 # port to access haproxy frontend

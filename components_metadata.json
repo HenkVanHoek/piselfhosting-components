@@ -57,9 +57,14 @@
             "utilities",
             "reverse_proxy",
             "System Tools",
-            "Security & Utilities"
+            "Security & Utilities",
+            "Chat/Messaging"
         ],
         "group_rules": {
+            "Chat/Messaging": {
+                "is_exclusive": false,
+                "name": "Chat/Messaging"
+            },
             "Home Automation": {
                 "is_exclusive": false,
                 "name": "Home Automation"
@@ -141,6 +146,40 @@
             "traefik_internal_port": null,
             "ui_port_variable": null
         },
+        "caddy": {
+            "component_version": "latest",
+            "config_templates": {
+                "Caddyfile": "caddy/Caddyfile"
+            },
+            "conflicts_with": [
+                "traefik",
+                "nginx-proxy-manager"
+            ],
+            "depends_on": [],
+            "description": "Caddy is a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go.",
+            "group": "reverse_proxy",
+            "has_configuration": true,
+            "has_traefik_support": false,
+            "has_ui": false,
+            "image_name": "caddy",
+            "intent_questions": [],
+            "name": "Caddy",
+            "package_id": "caddy-filebrowser-stack",
+            "project_url": "https://github.com/caddyserver/caddy",
+            "protocol": "http",
+            "resource_profile": {
+                "cpu": "low",
+                "ram": "low",
+                "storage_type": "persistent"
+            },
+            "tags": [
+                "web-server",
+                "reverse-proxy",
+                "ssl"
+            ],
+            "traefik_internal_port": null,
+            "ui_port_variable": null
+        },
         "conduit": {
             "component_version": "latest",
             "conflicts_with": [],
@@ -165,6 +204,29 @@
             ],
             "traefik_internal_port": null,
             "ui_port_variable": null
+        },
+        "filebrowser": {
+            "component_version": "latest",
+            "conflicts_with": [],
+            "depends_on": [],
+            "description": "Web-based file manager for managing your self-hosted data files and Caddyfile.",
+            "group": "System Tools",
+            "has_configuration": true,
+            "has_ui": true,
+            "image_name": "filebrowser/filebrowser",
+            "name": "Filebrowser",
+            "package_id": "caddy-filebrowser-stack",
+            "protocol": "http",
+            "resource_profile": {
+                "cpu": "low",
+                "ram": "low",
+                "storage_type": "persistent"
+            },
+            "tags": [
+                "utility",
+                "file-manager"
+            ],
+            "ui_port_variable": "FILEBROWSER_WEB_PORT"
         },
         "frigate": {
             "component_version": "stable",
@@ -606,6 +668,26 @@
             "traefik_internal_port": null,
             "ui_port_variable": "PISELFHOSTING_SERVICE_MAINTENANCE_WEB_PORT"
         },
+        "pish-fluffychat-web": {
+            "conflicts_with": [],
+            "depends_on": [
+                "matrix-synapse"
+            ],
+            "description": "FluffyChat is a gorgeous, decentralized, open and easy-to-use Matrix client for web. Connect with friends and family using a secure, federated messaging platform.",
+            "group": "Chat/Messaging",
+            "has_configuration": true,
+            "has_ui": true,
+            "image_name": "piselfhosting/fluffychat-web",
+            "name": "FluffyChat Web",
+            "tags": [
+                "matrix",
+                "chat",
+                "web",
+                "messaging",
+                "fluffychat"
+            ],
+            "ui_port_variable": null
+        },
         "portainer": {
             "component_version": "lts",
             "conflicts_with": [],
@@ -983,86 +1065,14 @@
                 "self-hosted"
             ],
             "traefik_internal_port": null
-        },
-        "caddy": {
-            "component_version": "latest",
-            "config_templates": {
-                "Caddyfile": "caddy/Caddyfile"
-            },
-            "conflicts_with": [
-                "traefik",
-                "nginx-proxy-manager"
-            ],
-            "depends_on": [],
-            "description": "Caddy is a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go.",
-            "group": "reverse_proxy",
-            "has_configuration": true,
-            "has_traefik_support": false,
-            "has_ui": false,
-            "image_name": "caddy",
-            "intent_questions": [],
-            "name": "Caddy",
-            "package_id": "caddy-filebrowser-stack",
-            "project_url": "https://github.com/caddyserver/caddy",
-            "protocol": "http",
-            "resource_profile": {
-                "cpu": "low",
-                "ram": "low",
-                "storage_type": "persistent"
-            },
-            "tags": [
-                "web-server",
-                "reverse-proxy",
-                "ssl"
-            ],
-            "traefik_internal_port": null,
-            "ui_port_variable": null
-        },
-        "pish-fluffychat-web": {
-            "conflicts_with": [],
-            "depends_on": [
-                "matrix-synapse"
-            ],
-            "description": "FluffyChat is a gorgeous, decentralized, open and easy-to-use Matrix client for web. Connect with friends and family using a secure, federated messaging platform.",
-            "group": "Chat/Messaging",
-            "has_configuration": true,
-            "has_ui": true,
-            "image_name": "piselfhosting/fluffychat-web",
-            "name": "FluffyChat Web",
-            "tags": [
-                "matrix",
-                "chat",
-                "web",
-                "messaging",
-                "fluffychat"
-            ],
-            "ui_port_variable": null
-        },
-        "filebrowser": {
-            "component_version": "latest",
-            "conflicts_with": [],
-            "depends_on": [],
-            "description": "Web-based file manager for managing your self-hosted data files and Caddyfile.",
-            "group": "System Tools",
-            "has_configuration": true,
-            "has_ui": true,
-            "image_name": "filebrowser/filebrowser",
-            "name": "Filebrowser",
-            "package_id": "caddy-filebrowser-stack",
-            "protocol": "http",
-            "resource_profile": {
-                "cpu": "low",
-                "ram": "low",
-                "storage_type": "persistent"
-            },
-            "tags": [
-                "utility",
-                "file-manager"
-            ],
-            "ui_port_variable": "FILEBROWSER_WEB_PORT"
         }
     },
     "packages": {
+        "caddy-filebrowser-stack": {
+            "description": "Deploy Caddy reverse proxy together with FileBrowser to easily edit configuration files from your browser.",
+            "name": "Caddy & Filebrowser Stack",
+            "network_type": "bridge"
+        },
         "media-stack": {
             "description": "",
             "name": "Media Stack",
