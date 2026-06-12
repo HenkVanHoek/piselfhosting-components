@@ -675,18 +675,18 @@
             "depends_on": [
                 "matrix-synapse"
             ],
-            "description": "A modern web client for Matrix, serving the FluffyChat interface.",
-            "group": "Communication",
+            "description": "A modern, beautiful, and easy-to-use Matrix client for the web, based on FluffyChat. This component provides a web interface to connect to your Matrix homeserver.",
+            "docker_service_name": "fluffychat-web",
+            "group": "Chat",
             "has_configuration": true,
             "has_ui": true,
-            "image_name": "piselfhosting-fluffychat-web",
+            "image_name": "piselfhosting/fluffychat-web",
             "name": "FluffyChat Web",
             "tags": [
-                "matrix",
                 "chat",
-                "web",
-                "communication",
-                "client"
+                "matrix",
+                "webclient",
+                "communication"
             ],
             "ui_port_variable": null
         },

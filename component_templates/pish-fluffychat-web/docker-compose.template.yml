@@ -8,13 +8,15 @@ services:
     build:
       context: https://github.com/HenkVanHoek/pish-fluffychat-web.git#main
       dockerfile: Dockerfile
-    image: {{ image_name }}:{{ component_version }}
+    image: piselfhosting/fluffychat-web:{{ component_version }}
     pull_policy: build
-    restart: unless-stopped
     ports:
-      - "{{ FLUFFYCHAT_WEB_HTTP_PORT }}:80"
+      - "{{ FLUFFYCHAT_WEB_PORT }}:80"
+    volumes:
+      - "{{ DATA_ROOT }}/fluffychat-web/config.js:/usr/share/nginx/html/config.js:ro"
     networks:
       - piselfhosting_net
+
 networks:
   piselfhosting_net:
     external: true
