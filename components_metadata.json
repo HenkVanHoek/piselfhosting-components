@@ -672,19 +672,21 @@
         },
         "pish-fluffychat-web": {
             "conflicts_with": [],
-            "depends_on": [],
-            "description": "A web interface for FluffyChat, serving static files and proxying Matrix API calls.",
-            "group": "Chat",
+            "depends_on": [
+                "matrix-synapse"
+            ],
+            "description": "A modern web client for Matrix, serving the FluffyChat interface.",
+            "group": "Communication",
             "has_configuration": true,
             "has_ui": true,
             "image_name": "piselfhosting-fluffychat-web",
             "name": "FluffyChat Web",
             "tags": [
-                "chat",
                 "matrix",
-                "fluffychat",
+                "chat",
                 "web",
-                "nginx"
+                "communication",
+                "client"
             ],
             "ui_port_variable": null
         },

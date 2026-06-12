@@ -4,12 +4,15 @@
 # breaking_changes: "None"
 services:
   fluffychat-web:
-    image: "{{ image_name }}:{{ component_version }}"
     container_name: piselfhosting-fluffychat-web
+    build:
+      context: https://github.com/HenkVanHoek/pish-fluffychat-web.git#main
+      dockerfile: Dockerfile
+    image: {{ image_name }}:{{ component_version }}
+    pull_policy: build
+    restart: unless-stopped
     ports:
       - "{{ FLUFFYCHAT_WEB_HTTP_PORT }}:80"
-    volumes:
-      - "./config/default.conf:/etc/nginx/conf.d/default.conf:ro"
     networks:
       - piselfhosting_net
 networks:

@@ -2,17 +2,10 @@
     "variables": [
         {
             "default": "8080",
-            "description": "The host port for the FluffyChat Web interface.",
+            "description": "The host port for accessing the FluffyChat web interface.",
             "id": "FLUFFYCHAT_WEB_HTTP_PORT",
             "label": "FluffyChat Web HTTP Port",
             "type": "port"
-        },
-        {
-            "default": "matrix.example.com",
-            "description": "The URL of your Matrix homeserver (e.g., matrix.example.com) for proxying API calls.",
-            "id": "FLUFFYCHAT_MATRIX_HOMESERVER",
-            "label": "Matrix Homeserver URL",
-            "type": "string"
         }
     ]
 }
