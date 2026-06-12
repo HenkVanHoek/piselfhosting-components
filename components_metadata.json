@@ -1002,7 +1002,7 @@
             "image_name": "caddy",
             "intent_questions": [],
             "name": "Caddy",
-            "package_id": null,
+            "package_id": "caddy-filebrowser-stack",
             "project_url": "https://github.com/caddyserver/caddy",
             "protocol": "http",
             "resource_profile": {
