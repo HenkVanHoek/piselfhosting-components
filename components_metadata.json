@@ -58,12 +58,23 @@
             "reverse_proxy",
             "System Tools",
             "Security & Utilities",
-            "Chat/Messaging"
+            "Chat/Messaging",
+            "Chat",
+            "Communication",
+            "Messaging"
         ],
         "group_rules": {
+            "Chat": {
+                "is_exclusive": false,
+                "name": "Chat"
+            },
             "Chat/Messaging": {
                 "is_exclusive": false,
                 "name": "Chat/Messaging"
+            },
+            "Communication": {
+                "is_exclusive": false,
+                "name": "Communication"
             },
             "Home Automation": {
                 "is_exclusive": false,
@@ -72,6 +83,10 @@
             "Media Stack": {
                 "is_exclusive": false,
                 "name": "Media Stack"
+            },
+            "Messaging": {
+                "is_exclusive": false,
+                "name": "Messaging"
             },
             "Security & Utilities": {
                 "is_exclusive": false,
